@@ -1,6 +1,6 @@
 {
   "name": "jello-preprocessor-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "jello 组件使用短路径",
   "main": "index.js",
   "scripts": {

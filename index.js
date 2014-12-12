@@ -23,7 +23,22 @@ fisVersion.extHtml = (function(origin) {
 
         });
 
-        return content_new;
+
+        content = content_new;
+        var reg = /(#\*[\s\S]*?(?:\*#|$)|##[^\n\r\f]*)|(?:#(require|extends|widget|html|uri)\s*\(\s*('|")(.*?)\3)/ig;
+        var callback = function(m, comment, directive, quote, url) {
+            if (url) {
+                m = '#' + directive + '('+  '<<<require:' + quote + url + quote + '>>>';
+            } else if(comment) {
+                m = fisVersion.analyseComment(comment);
+            }
+
+            return m;
+        };
+
+        content = content.replace(reg, callback);
+
+        return content;
     };
 })(fisVersion.extHtml);
 
