@@ -30,7 +30,7 @@ fisVersion.extHtml = (function(origin) {
             if (url) {
                 m = '#' + directive + '('+  '<<<require:' + quote + url + quote + '>>>';
             } else if(comment) {
-                m = fisVersion.analyseComment(comment);
+                m = fis.compile.analyseComment(comment);
             }
 
             return m;
